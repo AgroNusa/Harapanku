@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harapanku - Klinik Tumbuh Kembang Anak</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800;900&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: "#4A90E2",
+              "blue-dark": "#2563eb",
+              "blue-light": "#EBF4FC",
+              "blue-soft": "#3b82f6",
+              sage: "#7ca982",
+              "sage-light": "#eaf4ec",
+              "sage-dark": "#5e8c64",
+              orange: "#F5A623",
+              "orange-hover": "#e09015",
+              "orange-dark": "#ea580c"
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'Nunito', 'sans-serif'],
+            subheading: ['Nunito', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+            '4xl': '2rem'
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .blob-animate {
+      animation: morph 8s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] font-body text-[#1e293b] antialiased">
+<!-- HEADER / NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+<div class="h-20 max-w-[1240px] mx-auto px-5 sm:px-8 flex items-center justify-between gap-6">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<img alt="Harapanku Clinic Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UdiWBriNqA3e99yNcS37f5aJtZhfFqozJjmXHS7knPXKR0kMFMcr24JnfA6EmSB_2tIfHv6kLi_1tQ9-LCwYeWlif1_Nal3Kr9q5LyUKoErCFE1kl4YSYOdX2YmolU6P0KB2mCTWKEckeDxClMWSkHFo8lHe-1QA187QUAuopWcaLQFsmQvbiEZMRKC0o_AIFarXXeRA84k4uUR-dd7WkwPRpL1bEmFm65lGPFXMdsU9xTtAPPdI3wvf8"/>
+</a>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-8 text-sm font-semibold font-subheading text-slate-600"><a class="hover:text-brand-blue transition-colors py-2" href="#layanan">Layanan Terapi</a>
+<a class="hover:text-brand-blue transition-colors py-2" href="#fasilitas">Fasilitas</a>
+<a class="hover:text-brand-blue transition-colors py-2" href="#paket-asesmen">Paket Asesmen</a>
+<a class="hover:text-brand-blue transition-colors py-2" href="#alur">Alur Konsultasi</a>
+<a class="hover:text-brand-blue transition-colors py-2" href="#dashboard">Parent Dashboard</a>
+<a class="hover:text-brand-blue transition-colors py-2" href="#faq">FAQ</a></nav>
+<!-- Action Button -->
+<div class="flex items-center gap-3">
+<button class="open-modal-btn hidden sm:inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-subheading font-bold text-sm px-5 py-2.5 rounded-full shadow-[0_4px_14px_rgba(245,166,35,0.35)] transition-all hover:shadow-[0_6px_18px_rgba(245,166,35,0.45)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>Daftar Asesmen Awal</span>
+</button>
+<a class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue hover:bg-brand-blue hover:text-white flex items-center justify-center transition-all shadow-sm" href="https://wa.me/628115400992" title="Chat WhatsApp">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full pt-20">
+<!-- SECTION 1: HERO SECTION -->
+<section class="relative w-full py-12 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-[#f3f8fd] via-white to-transparent">
+<!-- Soft Ambient Background Blobs -->
+<div class="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-100/60 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-brand-sage-light/80 blur-3xl pointer-events-none -z-10"></div>
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column: Copy -->
+<div class="lg:col-span-7 flex flex-col items-start text-left">
+<!-- Sage Green Trust Pill -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sage-light border border-brand-sage/20 text-brand-sage-dark font-subheading font-bold text-xs sm:text-sm mb-5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-brand-sage">verified</span>
+<span>Terakreditasi &amp; Lingkungan Ramah Anak di Balikpapan</span>
+</div>
+<h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[46px] text-slate-900 tracking-tight leading-[1.2] mb-5">
+              Ketahui Kebutuhan Tumbuh Kembang Anak Anda Hari Ini.
+            </h1>
+<p class="font-body text-slate-600 text-base sm:text-lg max-w-2xl leading-relaxed mb-8">
+              Tanpa antrean berbulan-bulan. Layanan terpadu <span class="font-semibold text-slate-800">Terapi ABA, Wicara, dan Okupasi</span> dengan pemantauan data transparan terintegrasi langsung untuk ketenangan pikiran orang tua.
+            </p>
+<!-- CTA Group (Orange reserved strictly for primary CTA) -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-9">
+<button class="open-modal-btn inline-flex items-center justify-center gap-2.5 bg-brand-orange hover:bg-brand-orange-hover text-white font-subheading font-extrabold text-base px-8 py-4 rounded-2xl shadow-[0_8px_24px_rgba(245,166,35,0.38)] hover:shadow-[0_12px_28px_rgba(245,166,35,0.48)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+<span>Jadwalkan Asesmen Awal Sekarang</span>
+</button>
+<a class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-brand-blue font-subheading font-bold text-base px-6 py-4 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-brand-blue/30" href="https://wa.me/628115400992" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-[22px] text-brand-sage">chat</span>
+<span>Tanya via WhatsApp</span>
+</a>
+</div>
+<!-- Credibility Badges -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 border-t border-slate-200/80 w-full text-slate-600 text-xs sm:text-sm font-subheading font-semibold">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-brand-sage" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Dokter &amp; Psikolog Anak</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-brand-sage" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Laporan Digital Real-Time</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-brand-sage" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Pendekatan Penuh Kasih</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Warm Visual with Soft Organic Blob Shapes -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<!-- Soft Organic Playful Blobs behind Photo -->
+<div class="absolute -inset-6 sm:-inset-10 -z-10 flex items-center justify-center pointer-events-none">
+<!-- Pastel Blue Blob -->
+<div class="w-80 h-80 sm:w-[420px] sm:h-[420px] bg-gradient-to-tr from-brand-blue-light via-blue-100 to-sky-50 rounded-[45%_55%_65%_35%/50%_45%_55%_50%] opacity-90 blur-sm blob-animate"></div>
+<!-- Sage Green Accent Shape -->
+<div class="absolute -bottom-6 -left-6 w-48 h-48 sm:w-56 sm:h-56 bg-gradient-to-br from-brand-sage-light to-[#d8edd9] rounded-full opacity-80 blur-[2px]"></div>
+<!-- Gentle Pastel Floating Rings & Circles -->
+<svg class="absolute -top-6 -right-6 w-32 h-32 text-amber-200 opacity-60" fill="none" viewbox="0 0 100 100">
+<circle cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="8 6" stroke-width="6"></circle>
+</svg>
+<div class="absolute top-1/3 -right-3 w-6 h-6 rounded-full bg-brand-sage/40"></div>
+<div class="absolute -bottom-4 right-1/4 w-5 h-5 rounded-full bg-brand-blue/30"></div>
+</div>
+<!-- Main Photo Container with Warm Rounded Border -->
+<div class="relative w-full max-w-md mx-auto">
+<div class="relative rounded-[2.25rem] overflow-hidden p-2.5 bg-white shadow-[0_16px_40px_rgba(37,99,235,0.08)] ring-1 ring-slate-100">
+<img alt="Terapis ramah Harapanku membimbing stimulasi sensori anak" class="w-full h-auto aspect-[4/3] object-cover rounded-[1.85rem]" src="https://lh3.googleusercontent.com/aida/AEtjO1WisafzXmZTEWVilxz-kdBegsDjXqf0Fl7TkH2ldRcVWpRuepyoRJzxVVb8WPV_cJ0uhpZjZWch2UlFSJRwUZL9eVjlMwdG68JQPN9Ql-t99YcUllScUub9_tlkV4nlYajM3EpwslLcDNBa-lu676ly6xZzYB2I1x9tMxjHSCl7sMdFtzL5i7f4e7eGUJVQZvtl3_rs9ia958xSTNg7d8-Tj_bN93-2DyAtQdNb2uPHLih-9yW-6Fz0nQ4"/>
+</div>
+<!-- Reassuring Floating Review Badge -->
+<div class="absolute -bottom-5 -left-4 sm:left-2 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.09)] border border-slate-100 flex items-center gap-3 max-w-[270px]">
+<div class="w-11 h-11 rounded-xl bg-amber-50 text-brand-orange flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">kid_star</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-heading font-bold text-slate-800 text-base leading-none">4.9 / 5.0</span>
+<div class="flex text-brand-orange">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="font-subheading text-xs text-slate-500 font-semibold mt-0.5">Kepuasan 350+ Orang Tua</span>
+</div>
+</div>
+<!-- Available Schedule Tag -->
+<div class="hidden sm:flex absolute -top-3 -right-3 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-slate-100 items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-brand-sage animate-ping"></span>
+<span class="w-2 h-2 rounded-full bg-brand-sage absolute left-3.5"></span>
+<span class="font-subheading font-bold text-xs text-slate-700 pl-2">Slot Asesmen Pekan Ini Siap</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: WHY CHOOSE US (FEATURES) -->
+<section class="w-full py-16 sm:py-20 bg-white" id="keunggulan">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-blue bg-brand-blue-light px-3.5 py-1 rounded-full inline-block mb-3">KEUNGGULAN HARAPANKU</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl text-slate-900 mb-3">Mengapa Ratusan Orang Tua Mempercayakan Buah Hatinya Kepada Kami?</h2>
+<p class="font-body text-slate-600 text-sm sm:text-base">Pendekatan holistik yang dirancang secara personal dan berorientasi jangka panjang untuk setiap tahapan usia.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+<!-- Card 1 -->
+<div class="bg-[#f8fafc] hover:bg-white rounded-3xl p-7 border border-slate-100 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(74,144,226,0.09)] hover:-translate-y-1 transition-all flex flex-col items-start group">
+<div class="w-13 h-13 p-3 rounded-2xl bg-brand-blue-light text-brand-blue flex items-center justify-center mb-5 group-hover:bg-brand-blue group-hover:text-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-[28px]">family_restroom</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Terapi Terintegrasi Komprehensif</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Layanan menyeluruh meliputi Terapi ABA (Perilaku), Wicara, dan Okupasi dalam satu roadmap terpadu tanpa penanganan yang terpisah-pisah, sehingga kemajuan stimulasi lebih terarah.
+            </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#f8fafc] hover:bg-white rounded-3xl p-7 border border-slate-100 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(124,169,130,0.12)] hover:-translate-y-1 transition-all flex flex-col items-start group">
+<div class="w-13 h-13 p-3 rounded-2xl bg-brand-sage-light text-brand-sage flex items-center justify-center mb-5 group-hover:bg-brand-sage group-hover:text-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-[28px]">monitoring</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Parent Dashboard Terbuka</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Pemantauan progres anak secara berkala dan real-time langsung melalui smartphone atau laptop Anda tanpa jeda informasi, memberi rasa tenang bagi Ayah dan Bunda.
+            </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-[#f8fafc] hover:bg-white rounded-3xl p-7 border border-slate-100 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(74,144,226,0.09)] hover:-translate-y-1 transition-all flex flex-col items-start group">
+<div class="w-13 h-13 p-3 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center mb-5 group-hover:bg-brand-blue group-hover:text-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-[28px]">clinical_notes</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Terapis Tersertifikasi &amp; Hangat</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Didukung oleh psikolog anak dan tenaga terapis lulusan terbaik dengan lisensi resmi, mengutamakan pendekatan bermain yang menyenangkan tanpa rasa takut bagi si kecil.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: SERVICES (CARDS) -->
+<section class="w-full py-16 sm:py-20 bg-[#f8fafc] border-y border-slate-100" id="layanan">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div class="max-w-xl">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-blue bg-brand-blue-light px-3.5 py-1 rounded-full inline-block mb-3">LAYANAN KLINIS KAMI</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl text-slate-900 mb-2">Program Terapi Spesifik &amp; Terarah</h2>
+<p class="font-body text-sm sm:text-base text-slate-600">Metode klinis teruji untuk mendukung kemandirian gerak, komunikasi aktif, dan ketenangan sensorik buah hati Anda.</p>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-2 font-subheading font-bold text-sm text-brand-blue hover:text-brand-blue-dark transition-colors self-start md:self-auto cursor-pointer">
+<span>Daftar Konsultasi Sesi Terapi</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Service Card 1 -->
+<div class="bg-white rounded-3xl p-7 border border-slate-150 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-brand-blue-light text-brand-blue font-subheading font-bold text-xs">Evaluasi Milestone 360°</span>
+<span class="font-subheading text-xs font-semibold text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 90 Menit
+                </span>
+</div>
+<h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Asesmen Awal Komprehensif</h3>
+<p class="font-body text-sm text-slate-600 mb-5 leading-relaxed">
+                Evaluasi mendalam oleh psikolog anak dan tim multidisiplin untuk mengidentifikasi potensi, milestones, serta hambatan perkembangan sejak dini.
+              </p>
+<ul class="space-y-2 mb-6 font-body text-sm text-slate-700">
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Diagnosis komprehensif motorik, wicara, dan kognitif</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Rekomendasi kurikulum terapi individual tertulis</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Sesi evaluasi dan diskusi mendalam 1-on-1 dengan orang tua</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-1.5 font-subheading font-bold text-sm text-brand-blue hover:text-brand-blue-dark transition-colors pt-2 self-start cursor-pointer">
+<span>Konsultasikan Kebutuhan Ini</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-white rounded-3xl p-7 border border-slate-150 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-brand-sage-light text-brand-sage-dark font-subheading font-bold text-xs">Modifikasi Perilaku</span>
+<span class="font-subheading text-xs font-semibold text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 60 Menit
+                </span>
+</div>
+<h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Terapi Perilaku (ABA)</h3>
+<p class="font-body text-sm text-slate-600 mb-5 leading-relaxed">
+                Program penguatan perilaku adaptif positif, fokus perhatian, kepatuhan instruksi sederhana, serta pengelolaan emosi dan tantrum dengan pendekatan kasih sayang.
+              </p>
+<ul class="space-y-2 mb-6 font-body text-sm text-slate-700">
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Pendekatan positive reinforcement ramah anak</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Melatih rentang fokus dan pemahaman instruksi</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Stimulasi kesiapan adaptasi di lingkungan sekolah</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-1.5 font-subheading font-bold text-sm text-brand-sage-dark hover:text-brand-sage transition-colors pt-2 self-start cursor-pointer">
+<span>Konsultasikan Kebutuhan Ini</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-white rounded-3xl p-7 border border-slate-150 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-brand-blue-light text-brand-blue font-subheading font-bold text-xs">Komunikasi &amp; Bahasa</span>
+<span class="font-subheading text-xs font-semibold text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 45 Menit
+                </span>
+</div>
+<h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Terapi Wicara (Speech Therapy)</h3>
+<p class="font-body text-sm text-slate-600 mb-5 leading-relaxed">
+                Membantu stimulasi kejelasan artikulasi kata, penambahan kosa kata aktif, komunikasi dua arah, dan penguatan otot rongga mulut untuk anak dengan keluhan speech delay.
+              </p>
+<ul class="space-y-2 mb-6 font-body text-sm text-slate-700">
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Stimulasi bicara aktif untuk keterlambatan bicara</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Koreksi artikulasi fonem dan kejelasan pengucapan</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+<span>Terapi oral-motorik untuk kesulitan makan (picky eater)</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-1.5 font-subheading font-bold text-sm text-brand-blue hover:text-brand-blue-dark transition-colors pt-2 self-start cursor-pointer">
+<span>Konsultasikan Kebutuhan Ini</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Service Card 4 -->
+<div class="bg-white rounded-3xl p-7 border border-slate-150 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-brand-sage-light text-brand-sage-dark font-subheading font-bold text-xs">Sensori &amp; Motorik Halus</span>
+<span class="font-subheading text-xs font-semibold text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 60 Menit
+                </span>
+</div>
+<h3 class="font-heading font-bold text-xl text-slate-900 mb-2">Terapi Okupasi (Occupational Therapy)</h3>
+<p class="font-body text-sm text-slate-600 mb-5 leading-relaxed">
+                Melatih integrasi sensori motorik, regulasi keseimbangan fisik, stimulasi taktil, serta kemandirian anak dalam aktivitas makan, memakai baju, dan memegang pensil.
+              </p>
+<ul class="space-y-2 mb-6 font-body text-sm text-slate-700">
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Regulasi integrasi sensori vestibular dan taktil</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Kekuatan genggaman jemari dan koordinasi motorik halus</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span>
+<span>Kemandirian aktivitas harian (ADL) secara terstruktur</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-1.5 font-subheading font-bold text-sm text-brand-sage-dark hover:text-brand-sage transition-colors pt-2 self-start cursor-pointer">
+<span>Konsultasikan Kebutuhan Ini</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: HOW IT WORKS (ROADMAP) -->
+<section class="w-full py-16 sm:py-20 bg-white" id="alur">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-sage-dark bg-brand-sage-light px-3.5 py-1 rounded-full inline-block mb-3">ALUR TERAPI KAMI</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl text-slate-900 mb-3">3 Langkah Mudah Menuju Tumbuh Kembang Optimal</h2>
+<p class="font-body text-slate-600 text-sm sm:text-base">Prosedur terstruktur yang ramah anak dan sepenuhnya transparan bagi keluarga.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Step 1 -->
+<div class="bg-[#f8fafc] rounded-3xl p-7 border border-slate-100 flex flex-col relative">
+<div class="flex items-center justify-between mb-5">
+<span class="w-11 h-11 rounded-2xl bg-brand-blue text-white font-heading font-bold text-lg flex items-center justify-center shadow-sm">1</span>
+<span class="font-subheading text-xs font-bold text-brand-blue">Langkah Pertama</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Asesmen Psikologi &amp; Observasi</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Pemeriksaan menyeluruh milestone motorik, kognitif, dan wicara bersama psikolog anak di ruang stimulasi yang nyaman dan penuh mainan edukatif.
+            </p>
+</div>
+<!-- Step 2 -->
+<div class="bg-[#f8fafc] rounded-3xl p-7 border border-slate-100 flex flex-col relative">
+<div class="flex items-center justify-between mb-5">
+<span class="w-11 h-11 rounded-2xl bg-brand-sage text-white font-heading font-bold text-lg flex items-center justify-center shadow-sm">2</span>
+<span class="font-subheading text-xs font-bold text-brand-sage-dark">Langkah Kedua</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Penyusunan Roadmap Personal</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Tim klinis merumuskan target perkembangan spesifik buah hati bersama orang tua, menentukan kombinasi jadwal terapi yang tepat dan proporsional.
+            </p>
+</div>
+<!-- Step 3 -->
+<div class="bg-[#f8fafc] rounded-3xl p-7 border border-slate-100 flex flex-col relative">
+<div class="flex items-center justify-between mb-5">
+<span class="w-11 h-11 rounded-2xl bg-blue-600 text-white font-heading font-bold text-lg flex items-center justify-center shadow-sm">3</span>
+<span class="font-subheading text-xs font-bold text-blue-600">Langkah Ketiga</span>
+</div>
+<h3 class="font-heading font-bold text-lg text-slate-800 mb-2">Sesi Terapi &amp; Evaluasi Berkala</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Sesi terapi interaktif 1-on-1 menyenangkan yang selalu tercatat dalam laporan harian, lengkap dengan evaluasi milestone berkala setiap 12 sesi.
+            </p>
+</div>
+</div>
+<div class="mt-10 text-center">
+<p class="font-subheading text-xs sm:text-sm font-semibold text-slate-500 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-brand-sage">check_circle</span>
+<span>Semua catatan sesi dapat langsung diakses orang tua di hari yang sama via Parent Dashboard</span>
+</p>
+</div>
+</div>
+</section>
+<!-- SECTION 5: PARENT DASHBOARD MOCKUP -->
+<section class="w-full py-16 sm:py-20 bg-[#1e293b] text-slate-100 relative overflow-hidden" id="dashboard">
+<div class="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-brand-blue/20 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-brand-sage/15 blur-3xl pointer-events-none"></div>
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Column -->
+<div class="lg:col-span-6 flex flex-col items-start">
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-blue/20 text-blue-300 font-subheading font-bold text-xs mb-4">
+<span class="material-symbols-outlined text-[16px]">devices</span>
+<span>TEKNOLOGI TRANSPARAN</span>
+</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-4 leading-tight">
+              Pantau progres anak Anda secara real-time dari mana saja
+            </h2>
+<p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              Orang tua tidak perlu lagi bingung apa yang dipelajari si kecil saat sesi berlangsung. Akses catatan harian terapis, grafik milestone motorik, video observasi, dan jadwal terapi langsung dari genggaman Anda.
+            </p>
+<div class="space-y-3 mb-8 w-full font-body text-sm text-slate-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-brand-sage text-[20px]">check_circle</span>
+<span>Grafik perkembangan kompetensi motorik &amp; wicara mingguan</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-brand-sage text-[20px]">check_circle</span>
+<span>Catatan evaluasi harian (Daily Therapy Log) dari terapis</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-brand-sage text-[20px]">check_circle</span>
+<span>Konsultasi chat personal dengan supervisor klinis</span>
+</div>
+</div>
+<button class="open-modal-btn inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 font-subheading font-bold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md cursor-pointer">
+<span class="material-symbols-outlined text-[18px] text-brand-blue">visibility</span>
+<span>Konsultasikan Akses Dashboard</span>
+</button>
+</div>
+<!-- Right Column: Interactive Mockup -->
+<div class="lg:col-span-6 w-full">
+<div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-700/30">
+<!-- Mockup Header -->
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-blue-light text-brand-blue flex items-center justify-center font-heading font-bold text-sm">
+                    RF
+                  </div>
+<div>
+<h4 class="font-heading font-bold text-slate-800 text-base leading-tight">Rafa Al-Fatih (3 Th 8 Bln)</h4>
+<span class="font-body text-xs text-slate-500">Terapi Wicara &amp; Okupasi</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-brand-sage-light text-brand-sage-dark text-xs font-subheading font-bold">Aktif Berprogres</span>
+</div>
+<!-- Tab Mock -->
+<div class="flex gap-2 pb-3 mb-4 overflow-x-auto text-xs font-subheading font-bold">
+<span class="px-3 py-1.5 rounded-lg bg-brand-blue text-white whitespace-nowrap shadow-sm">Milestone Radar</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 whitespace-nowrap">Sesi Terakhir</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 whitespace-nowrap">Target Bulan Ini</span>
+</div>
+<!-- Progress Bars -->
+<div class="space-y-3.5 mb-5">
+<div>
+<div class="flex justify-between text-xs font-subheading font-bold mb-1">
+<span class="text-slate-700">Keterampilan Wicara Ekspresif</span>
+<span class="text-brand-blue">82%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+<div class="h-full bg-brand-blue rounded-full transition-all duration-700" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-subheading font-bold mb-1">
+<span class="text-slate-700">Sensori Integrasi &amp; Fokus</span>
+<span class="text-brand-sage-dark">75%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+<div class="h-full bg-brand-sage rounded-full transition-all duration-700" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="bg-slate-50 rounded-2xl p-3.5 mb-4 border border-slate-100">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-subheading text-xs text-slate-500 font-semibold">Tren Kemandirian 8 Pekan</span>
+<span class="font-subheading text-xs text-brand-sage-dark font-bold">+28% Peningkatan</span>
+</div>
+<svg class="w-full h-12 text-brand-blue" fill="none" preserveaspectratio="none" viewbox="0 0 300 50">
+<path d="M0,42 Q40,36 75,32 T150,22 T225,14 T300,6" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M0,42 Q40,36 75,32 T150,22 T225,14 T300,6 L300,50 L0,50 Z" fill="currentColor" fill-opacity="0.1"></path>
+<circle cx="300" cy="6" fill="currentColor" r="3.5"></circle>
+</svg>
+</div>
+<!-- Daily Activity Log -->
+<div class="bg-white rounded-2xl p-3 border border-slate-150 flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage text-[20px] flex-shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col">
+<span class="font-subheading text-xs text-slate-800 font-bold">Catatan Sesi Hari Ini (14:30 WITA):</span>
+<p class="font-body text-xs text-slate-600 mt-0.5">
+                    “Ananda Rafa sangat antusias merespon 8 instruksi kata baru dan berhasil menyusun balok bentuk tanpa distraksi.”
+                  </p>
+<span class="font-subheading text-[11px] text-brand-blue font-semibold mt-1">Terapis: Kak Sarah, S.Psi.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CALL TO ACTION BANNER -->
+<!-- SECTION: FASILITAS KAMI -->
+<section class="w-full py-16 sm:py-20 bg-white border-t border-slate-100" id="fasilitas">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-sage-dark bg-brand-sage-light px-3.5 py-1 rounded-full inline-block mb-3">FASILITAS KLINIK</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-3 tracking-tight">Fasilitas Ramah Anak &amp; Nyaman Seperti di Rumah</h2>
+<p class="font-body text-slate-600 text-sm sm:text-base leading-relaxed">Ruang terapi dirancang khusus dengan standar higienis dan terapeutik internasional agar anak merasa riang dan bebas dari rasa cemas.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Facility 1 -->
+<div class="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group">
+<div class="relative aspect-[4/3] w-full overflow-hidden">
+<img alt="Ruang Sensori Integrasi (SI) Klinik Harapanku" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUDvTR99gIcwuWWCxgiVPN3DZU_kTQ_h2dcLJuWqYn5lxwV7lDaGetPmR9LZk1YKdSNpbeAxmX8SvGmnIacekdNGPHH6LgFkxlgyyGZHngv-3SaJuk7pbcV5c0Xpp6nr6L7M093N8PWFhA5EdZDXHDFgPo4yPZHTMi8CnRDd01ORI7Gm0t-iOyyDGZRaI8LocszMaKob7wz6qqH3tBT3E3J702FrA2TG-gX6bm0R1GRL9RwGdohmlQ"/>
+<span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-subheading font-bold text-slate-700 shadow-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-brand-sage"></span>
+            Sensori Integrasi
+          </span>
+</div>
+<div class="p-6 sm:p-7 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Ruang Sensori Integrasi (SI)</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Lengkap dengan sensory swing, matras pengaman bertaraf medis, dan tactile wall untuk melatih keseimbangan serta regulasi motorik si kecil.
+            </p>
+</div>
+<div class="pt-4 mt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-subheading font-semibold text-brand-sage-dark">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+            Higienis &amp; Aman Standar Medis
+          </div>
+</div>
+</div>
+<!-- Facility 2 -->
+<div class="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group">
+<div class="relative aspect-[4/3] w-full overflow-hidden">
+<img alt="Ruang Terapi Wicara &amp; Artikulasi Klinik Harapanku" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5IUMvNdMMx-sm4GRNYHtbN_tj8y8VnjdTCqVgo40vPIv3SMp0eN5v1Gh-STyd1Zya0ek4Mf-SXP6GPqh-VtVfIFJJlONDKSyNLBkOEdq0O22FBwrBu3mSh-CD4ifp4JA-pXiG9rY6Fkk4UClkhKwnPi6K4JxExgWdTVdpKJbvoKnKuLwi8aa5yxKdGY-6x3mxTukVugd0eQOysCwHnvI-PkqP0RyN-lb1F7Ytqgyai3sQjBiEWgVx"/>
+<span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-subheading font-bold text-slate-700 shadow-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-brand-blue"></span>
+            Wicara &amp; Bahasa
+          </span>
+</div>
+<div class="p-6 sm:p-7 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Ruang Terapi Wicara &amp; Artikulasi</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Meja ergonomis ramah anak, cermin artikulasi interaktif, flashcards, dan instrumen oral motor dalam lingkungan tenang.
+            </p>
+</div>
+<div class="pt-4 mt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-subheading font-semibold text-brand-blue">
+<span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+            Kedap Suara &amp; Bebas Distraksi
+          </div>
+</div>
+</div>
+<!-- Facility 3 -->
+<div class="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col group">
+<div class="relative aspect-[4/3] w-full overflow-hidden">
+<img alt="Ruang Observasi &amp; Konsultasi Orang Tua Klinik Harapanku" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANnGujzmtSaXcyW7MiO68c3LpV45qnoW4p5s-QTXxPmftKlTzAiRXV5SOAeX5zWYsIVOGZ21LZ-3NN6fS70EX0IvSg9E1WcJizllNks_l-dcSqtU7iL-URsfPqUr8Os5tXN8Q7x1qxvWyOZNLuJR4iNB17pEvh9rdedcPKTyKdVHJV46K7Z1oVGWOoB8aQMjMXd1ohEQIC6L1Wl3Qf7t6RWYWjyGDBH35ljWLy2_CL2E4OI-xUkGkZ"/>
+<span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-subheading font-bold text-slate-700 shadow-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            Konsultasi Keluarga
+          </span>
+</div>
+<div class="p-6 sm:p-7 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Ruang Observasi &amp; Konsultasi Ortu</h3>
+<p class="font-body text-sm text-slate-600 leading-relaxed">
+              Dilengkapi area bermain Montessori dan sofa nyaman untuk diskusi santai 1-on-1 bersama psikolog anak.
+            </p>
+</div>
+<div class="pt-4 mt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-subheading font-semibold text-brand-sage-dark">
+<span class="material-symbols-outlined text-[16px]">family_restroom</span>
+            Privasi Terjamin &amp; Nyaman
+          </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: PRICING SECTION -->
+<section class="w-full py-16 sm:py-20 bg-[#f8fafc] border-y border-slate-100" id="paket-asesmen">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-blue bg-brand-blue-light px-3.5 py-1 rounded-full inline-block mb-3">Investasi Tumbuh Kembang Buah Hati</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-3 tracking-tight">Pilihan Paket Asesmen Awal yang Transparan</h2>
+<p class="font-body text-slate-600 text-sm sm:text-base leading-relaxed">Tanpa biaya tersembunyi. Dapatkan evaluasi objektif dan rencana penanganan berbasis bukti klinis.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+<!-- Tier 1: Basic Screening -->
+<div class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative">
+<div>
+<div class="mb-4">
+<span class="px-3.5 py-1 rounded-full bg-slate-100 text-slate-700 font-subheading font-bold text-xs inline-block mb-2">Basic Screening</span>
+<h3 class="font-heading font-bold text-2xl text-slate-900 mb-1">Screening Tumbuh Kembang Dasar</h3>
+<p class="font-body text-xs text-slate-500">Ideal untuk deteksi dini tanda-tanda keterlambatan usia 1-4 tahun</p>
+</div>
+<div class="mb-6 pb-6 border-b border-slate-100 flex items-baseline gap-2">
+<span class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900">Rp 350.000</span>
+<span class="font-subheading text-xs font-semibold text-slate-500">/ anak (sekali sesi)</span>
+</div>
+<ul class="space-y-3.5 mb-8 font-body text-sm text-slate-700">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-blue text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Sesi observasi &amp; skrining motorik-wicara 45 menit</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-blue text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Kuesioner Denver II / M-CHAT terstandar</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-blue text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Ringkasan hasil skrining tertulis dalam format PDF</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-blue text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Konsultasi pengantar 15 menit dengan tim terapis</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn w-full inline-flex items-center justify-center gap-2 bg-brand-blue-light hover:bg-brand-blue text-brand-blue hover:text-white font-subheading font-bold text-sm py-3.5 px-6 rounded-2xl transition-all cursor-pointer border border-brand-blue-light">
+<span>Pilih Screening Dasar</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Tier 2: Comprehensive Assessment (Featured) -->
+<div class="bg-white rounded-3xl p-7 sm:p-8 border-2 border-brand-blue shadow-[0_16px_40px_rgba(74,144,226,0.09)] relative flex flex-col justify-between">
+<!-- Popular Badge -->
+<div class="absolute -top-3.5 right-6 bg-brand-orange text-white px-4 py-1 rounded-full text-xs font-subheading font-bold shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>Paling Direkomendasikan</span>
+</div>
+<div>
+<div class="mb-4">
+<span class="px-3.5 py-1 rounded-full bg-brand-blue-light text-brand-blue font-subheading font-bold text-xs inline-block mb-2">Comprehensive Assessment</span>
+<h3 class="font-heading font-bold text-2xl text-slate-900 mb-1">Asesmen Komprehensif Multidisiplin</h3>
+<p class="font-body text-xs text-slate-500">Pemeriksaan mendalam holistik oleh Psikolog Anak &amp; Terapis Spesialis</p>
+</div>
+<div class="mb-6 pb-6 border-b border-slate-100 flex items-baseline gap-2">
+<span class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900">Rp 750.000</span>
+<span class="font-subheading text-xs font-semibold text-slate-500">/ anak (paket lengkap)</span>
+</div>
+<ul class="space-y-3.5 mb-8 font-body text-sm text-slate-700">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage-dark text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Sesi observasi interaktif komprehensif 90 menit (Ruang Sensori &amp; Bermain)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage-dark text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Pemeriksaan 3 aspek: Motorik Sensori, Bahasa-Wicara, &amp; Perilaku Adaptif</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage-dark text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Laporan diagnosis klinis lengkap &amp; Roadmap Terapi Personal tertulis</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage-dark text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Sesi tatap muka konseling mendalam 1-on-1 dengan Psikolog Anak (30 menit)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-sage-dark text-[20px] flex-shrink-0 mt-0.5">check_circle</span>
+<span>Akses gratis 1 bulan Akun Parent Dashboard Real-time</span>
+</li>
+</ul>
+</div>
+<button class="open-modal-btn w-full inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-subheading font-bold text-sm py-3.5 px-6 rounded-2xl shadow-[0_6px_20px_rgba(245,166,35,0.35)] hover:shadow-[0_8px_24px_rgba(245,166,35,0.45)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span>Jadwalkan Asesmen Lengkap</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: FAQ -->
+<section class="w-full py-16 sm:py-20 bg-white" id="faq">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="font-subheading font-extrabold text-xs tracking-wider uppercase text-brand-blue bg-brand-blue-light px-3.5 py-1 rounded-full inline-block mb-3">Bantuan &amp; Informasi</span>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-3 tracking-tight">Pertanyaan Seputar Layanan Harapanku</h2>
+<p class="font-body text-slate-600 text-sm sm:text-base leading-relaxed">Temukan jawaban atas hal yang paling sering ditanyakan oleh Ayah dan Bunda sebelum memulai proses asesmen.</p>
+</div>
+<div class="max-w-3xl mx-auto space-y-4">
+<!-- FAQ 1 -->
+<details class="group bg-[#f8fafc] rounded-2xl border border-slate-100 p-5 sm:p-6 transition-all duration-300 [&amp;[open]]:bg-white [&amp;[open]]:shadow-sm [&amp;[open]]:border-slate-200">
+<summary class="font-heading font-bold text-base sm:text-lg text-slate-800 cursor-pointer list-none flex items-center justify-between gap-4">
+<span>Apakah ada masa tunggu (waiting list) untuk memulai asesmen atau terapi?</span>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 group-open:text-brand-blue transition-transform flex-shrink-0">expand_more</span>
+</summary>
+<p class="font-body text-sm text-slate-600 leading-relaxed mt-4 pt-4 border-t border-slate-100">
+          Di Harapanku, kami berkomitmen zero-waiting-list untuk asesmen awal. Jadwal asesmen dapat dikonfirmasi dalam 1-3 hari kerja sejak pendaftaran online, sehingga intervensi anak tidak tertunda.
+        </p>
+</details>
+<!-- FAQ 2 -->
+<details class="group bg-[#f8fafc] rounded-2xl border border-slate-100 p-5 sm:p-6 transition-all duration-300 [&amp;[open]]:bg-white [&amp;[open]]:shadow-sm [&amp;[open]]:border-slate-200">
+<summary class="font-heading font-bold text-base sm:text-lg text-slate-800 cursor-pointer list-none flex items-center justify-between gap-4">
+<span>Bagaimana latar belakang dan sertifikasi para terapis di Harapanku?</span>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 group-open:text-brand-blue transition-transform flex-shrink-0">expand_more</span>
+</summary>
+<p class="font-body text-sm text-slate-600 leading-relaxed mt-4 pt-4 border-t border-slate-100">
+          Seluruh tenaga terapis kami (Terapis Wicara, Okupasi, dan Terapi Perilaku/ABA) memiliki Surat Tanda Registrasi (STR) aktif dari Kementerian Kesehatan RI dan lulusan sarjana profesi universitas terkemuka, serta disupervisi langsung oleh Psikolog Klinis Anak tersertifikasi HIMPSI.
+        </p>
+</details>
+<!-- FAQ 3 -->
+<details class="group bg-[#f8fafc] rounded-2xl border border-slate-100 p-5 sm:p-6 transition-all duration-300 [&amp;[open]]:bg-white [&amp;[open]]:shadow-sm [&amp;[open]]:border-slate-200">
+<summary class="font-heading font-bold text-base sm:text-lg text-slate-800 cursor-pointer list-none flex items-center justify-between gap-4">
+<span>Berapa usia anak yang dapat mengikuti terapi di Klinik Harapanku?</span>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 group-open:text-brand-blue transition-transform flex-shrink-0">expand_more</span>
+</summary>
+<p class="font-body text-sm text-slate-600 leading-relaxed mt-4 pt-4 border-t border-slate-100">
+          Kami melayani anak usia intervensi dini mulai dari 12 bulan (1 tahun) hingga 12 tahun, dengan pendekatan stimulasi bermain yang disesuaikan menurut fase tumbuh kembang masing-masing anak.
+        </p>
+</details>
+<!-- FAQ 4 -->
+<details class="group bg-[#f8fafc] rounded-2xl border border-slate-100 p-5 sm:p-6 transition-all duration-300 [&amp;[open]]:bg-white [&amp;[open]]:shadow-sm [&amp;[open]]:border-slate-200">
+<summary class="font-heading font-bold text-base sm:text-lg text-slate-800 cursor-pointer list-none flex items-center justify-between gap-4">
+<span>Apakah orang tua diperbolehkan mendampingi anak selama sesi observasi/terapi?</span>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 group-open:text-brand-blue transition-transform flex-shrink-0">expand_more</span>
+</summary>
+<p class="font-body text-sm text-slate-600 leading-relaxed mt-4 pt-4 border-t border-slate-100">
+          Tentu saja! Kami sangat menganut filosofi kolaborasi keluarga. Orang tua dapat mengobservasi secara langsung atau memantau lewat ruang cermin satu arah (one-way mirror) dan rekaman ringkasan di Parent Dashboard.
+        </p>
+</details>
+</div>
+</div>
+</section><section class="w-full py-16 sm:py-20 bg-[#f8fafc]">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="bg-gradient-to-r from-blue-50 via-[#eff6ff] to-emerald-50/50 border border-blue-100 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-sm">
+<div class="max-w-2xl mx-auto flex flex-col items-center">
+<span class="px-4 py-1 rounded-full bg-white text-brand-blue font-subheading font-bold text-xs mb-3 shadow-xs border border-blue-100">
+              Langkah Awal Penuh Harapan
+            </span>
+<h2 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-3 tracking-tight">
+              Beri Hadiah Terbaik untuk Masa Depan Buah Hati Anda
+            </h2>
+<p class="font-body text-slate-600 text-sm sm:text-base mb-8 max-w-xl">
+              Intervensi sedini mungkin membawa dampak perubahan optimal bagi kemandirian dan kebahagiaan anak. Amankan jadwal observasi awal bersama tim dokter dan psikolog kami hari ini.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-4">
+<!-- Golden Orange CTA Button -->
+<button class="open-modal-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-subheading font-extrabold text-base px-8 py-4 rounded-2xl shadow-[0_8px_24px_rgba(245,166,35,0.35)] hover:shadow-[0_12px_28px_rgba(245,166,35,0.45)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span>Daftar Asesmen Awal Sekarang</span>
+</button>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-brand-sage-dark hover:bg-slate-50 font-subheading font-bold text-base px-6 py-4 rounded-2xl border border-slate-200 shadow-sm transition-colors" href="https://wa.me/628115400992" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-[20px] text-brand-sage">chat</span>
+<span>Konsultasi WhatsApp</span>
+</a>
+</div>
+<p class="font-subheading text-xs font-semibold text-slate-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span>
+<span>Slot asesmen tatap muka dibatasi per hari demi menjaga keheningan &amp; kenyamanan anak.</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-white border-t border-slate-150 pt-16 pb-12">
+<div class="max-w-[1240px] mx-auto px-5 sm:px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-100">
+<div class="md:col-span-4 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<img alt="Harapanku Clinic Logo" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UdiWBriNqA3e99yNcS37f5aJtZhfFqozJjmXHS7knPXKR0kMFMcr24JnfA6EmSB_2tIfHv6kLi_1tQ9-LCwYeWlif1_Nal3Kr9q5LyUKoErCFE1kl4YSYOdX2YmolU6P0KB2mCTWKEckeDxClMWSkHFo8lHe-1QA187QUAuopWcaLQFsmQvbiEZMRKC0o_AIFarXXeRA84k4uUR-dd7WkwPRpL1bEmFm65lGPFXMdsU9xTtAPPdI3wvf8"/>
+</div>
+<p class="font-body text-sm text-slate-600 leading-relaxed max-w-sm">
+            Pusat layanan terapi dan stimulasi tumbuh kembang anak terpadu di Balikpapan. Pendekatan ramah anak, komprehensif, dan berbasis bukti klinis.
+          </p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-2 bg-brand-sage-light/60 text-brand-sage-dark px-4 py-2 rounded-xl text-xs font-subheading font-bold hover:bg-brand-sage-light transition-colors border border-brand-sage/20" href="https://wa.me/628115400992">
+<span class="material-symbols-outlined text-[18px] text-brand-sage">chat</span>
+<span>WhatsApp Resmi: +62 811-5400-992</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col gap-3">
+<h4 class="font-heading font-bold text-base text-slate-900">Alamat Klinik</h4>
+<div class="flex items-start gap-2 text-sm font-body text-slate-600">
+<span class="material-symbols-outlined text-brand-blue text-[20px] mt-0.5">location_on</span>
+<span>Jl. MT Haryono No. 88, Balikpapan Selatan, Kalimantan Timur 76114</span>
+</div>
+<div class="flex items-center gap-2 text-sm font-body text-slate-600">
+<span class="material-symbols-outlined text-brand-blue text-[20px]">call</span>
+<span>(0542) 876-209</span>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col gap-3">
+<h4 class="font-heading font-bold text-base text-slate-900">Jam Layanan</h4>
+<div class="flex items-start gap-2 text-sm font-body text-slate-600">
+<span class="material-symbols-outlined text-brand-sage text-[20px] mt-0.5">schedule</span>
+<div class="flex flex-col">
+<span class="font-semibold text-slate-800">Senin - Sabtu:</span>
+<span>08:00 - 17:00 WITA</span>
+<span class="font-semibold text-slate-800 mt-1">Minggu:</span>
+<span>Khusus Reservasi Khusus</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 flex flex-col gap-3">
+<h4 class="font-heading font-bold text-base text-slate-900">Navigasi Cepat</h4>
+<ul class="flex flex-col gap-2 font-subheading text-xs font-semibold text-slate-600">
+<li><a class="hover:text-brand-blue transition-colors" href="#layanan">Layanan Terapi</a></li>
+<li><a class="hover:text-brand-blue transition-colors" href="#alur">Alur Konsultasi</a></li>
+<li><a class="hover:text-brand-blue transition-colors" href="#keunggulan">Tentang Kami</a></li>
+<li><a class="hover:text-brand-blue transition-colors" href="#dashboard">Portal Orang Tua</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs font-body text-slate-500">
+<p>© 2025 Klinik Tumbuh Kembang Harapanku. Seluruh hak cipta dilindungi.</p>
+<div class="flex items-center gap-6 font-subheading font-medium">
+<a class="hover:text-brand-blue transition-colors" href="#">Kebijakan Privasi Rekam Medis</a>
+<a class="hover:text-brand-blue transition-colors" href="#">Syarat &amp; Ketentuan</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ========================================================================= -->
+<!-- 4. FRICTIONLESS UX: QUICK ASSESSMENT MODAL POPUP DIALOG                  -->
+<!-- ========================================================================= -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300" id="assessment-modal">
+<div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 transform transition-all duration-300 scale-95 overflow-hidden">
+<!-- Top Decor Accent -->
+<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brand-blue via-brand-sage to-brand-orange"></div>
+<!-- Close Button -->
+<button aria-label="Tutup Dialog" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer" id="close-modal-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- Modal Content Area -->
+<div id="modal-form-container">
+<!-- Badge Reassurance -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-sage-light text-brand-sage-dark font-subheading font-bold text-xs mb-3">
+<span class="material-symbols-outlined text-[15px] text-brand-sage">check_circle</span>
+<span>Tanpa Antrean Panjang • Terjadwal Cepat • Diskusi Personal</span>
+</div>
+<h3 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 mb-1 leading-snug">
+          Jadwalkan Konsultasi &amp; Asesmen Awal
+        </h3>
+<p class="font-body text-xs sm:text-sm text-slate-500 mb-6">
+          Isi 4 info ringkas di bawah ini. Tim spesialis kami siap mendampingi kebutuhan buah hati tercinta.
+        </p>
+<!-- Frictionless 4-Field Form -->
+<form class="space-y-4" id="quick-assessment-form">
+<!-- Field 1: Nama Orang Tua -->
+<div>
+<label class="block font-subheading font-bold text-xs text-slate-700 mb-1" for="parent-name">
+              1. Nama Lengkap Orang Tua (Ayah / Bunda) <span class="text-rose-500">*</span>
+</label>
+<input class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue font-body text-sm text-slate-800 outline-none transition" id="parent-name" placeholder="Contoh: Bunda Nadia Putri" required="" type="text"/>
+</div>
+<!-- Field 2: Usia Anak -->
+<div>
+<label class="block font-subheading font-bold text-xs text-slate-700 mb-1" for="child-age">
+              2. Usia Anak Saat Ini <span class="text-rose-500">*</span>
+</label>
+<input class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue font-body text-sm text-slate-800 outline-none transition" id="child-age" placeholder="Contoh: 2 tahun 6 bulan" required="" type="text"/>
+</div>
+<!-- Field 3: Fokus / Keluhan Utama -->
+<div>
+<label class="block font-subheading font-bold text-xs text-slate-700 mb-1" for="concern-focus">
+              3. Fokus / Keluhan Utama <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue font-body text-sm text-slate-800 outline-none appearance-none bg-white transition pr-10" id="concern-focus" required="">
+<option disabled="" selected="" value="">Pilih kebutuhan perhatian si kecil...</option>
+<option value="Speech Delay / Terlambat Bicara">Speech Delay / Terlambat Bicara</option>
+<option value="Tantrum &amp; Fokus Perilaku (ABA)">Tantrum &amp; Fokus Perilaku (ABA)</option>
+<option value="Koordinasi Sensori &amp; Motorik (Okupasi)">Koordinasi Sensori &amp; Motorik (Okupasi)</option>
+<option value="Belum Tahu Pasti / Butuh Observasi Umum">Belum Tahu Pasti / Butuh Observasi Umum</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-slate-400 text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Field 4: WhatsApp -->
+<div>
+<label class="block font-subheading font-bold text-xs text-slate-700 mb-1" for="parent-phone">
+              4. Nomor WhatsApp Aktif <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<span class="absolute left-3.5 top-2.5 text-xs font-semibold text-slate-400 font-body">+62</span>
+<input class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue font-body text-sm text-slate-800 outline-none transition" id="parent-phone" placeholder="812-3456-7890" required="" type="tel"/>
+</div>
+</div>
+<!-- Empathetic Microcopy -->
+<div class="p-3 bg-brand-blue-light/50 rounded-xl border border-brand-blue-light flex items-start gap-2.5">
+<span class="material-symbols-outlined text-brand-blue text-[18px] flex-shrink-0 mt-0.5">favorite</span>
+<p class="font-body text-[11px] text-slate-600 leading-relaxed">
+              Pendataan lanjutan dan rekam observasi akan dipandu langsung secara personal via WhatsApp oleh Care Coordinator kami, agar Bunda/Ayah tidak perlu repot mengisi form panjang.
+            </p>
+</div>
+<!-- Warm Golden Orange CTA Button -->
+<button class="w-full flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-subheading font-extrabold text-sm py-3.5 rounded-xl shadow-[0_6px_20px_rgba(245,166,35,0.35)] hover:shadow-[0_8px_24px_rgba(245,166,35,0.45)] transition-all cursor-pointer" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Kirim &amp; Konsultasikan via WhatsApp</span>
+</button>
+</form>
+</div>
+<!-- Success State -->
+<div class="hidden text-center py-6" id="modal-success-state">
+<div class="w-16 h-16 rounded-full bg-brand-sage-light text-brand-sage flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h4 class="font-heading font-bold text-xl text-slate-900 mb-2">Terima Kasih, Ayah/Bunda!</h4>
+<p class="font-body text-sm text-slate-600 max-w-sm mx-auto mb-6 leading-relaxed">
+          Permintaan asesmen awal telah kami catat. Care Coordinator kami akan segera menghubungi nomor WhatsApp Anda untuk konfirmasi jadwal terbaik.
+        </p>
+<button class="bg-brand-blue hover:bg-brand-blue-dark text-white font-subheading font-bold text-sm px-6 py-2.5 rounded-xl transition-all cursor-pointer" id="success-done-btn">
+          Tutup &amp; Lanjutkan
+        </button>
+</div>
+</div>
+</div>
+<!-- JAVASCRIPT: Modal Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('assessment-modal');
+      const openButtons = document.querySelectorAll('.open-modal-btn');
+      const closeBtn = document.getElementById('close-modal-btn');
+      const form = document.getElementById('quick-assessment-form');
+      const formContainer = document.getElementById('modal-form-container');
+      const successState = document.getElementById('modal-success-state');
+      const successDoneBtn = document.getElementById('success-done-btn');
+
+      const openModal = (e) => {
+        if (e) e.preventDefault();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+          modal.firstElementChild.classList.remove('scale-95');
+          modal.firstElementChild.classList.add('scale-100');
+        }, 10);
+      };
+
+      const closeModal = () => {
+        modal.firstElementChild.classList.remove('scale-100');
+        modal.firstElementChild.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.remove('flex');
+          modal.classList.add('hidden');
+          // reset states after transition
+          formContainer.classList.remove('hidden');
+          successState.classList.add('hidden');
+        }, 200);
+      };
+
+      openButtons.forEach(btn => {
+        btn.addEventListener('click', openModal);
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      successDoneBtn.addEventListener('click', closeModal);
+
+      // Close when clicking backdrop
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Form submission handler
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const parentName = document.getElementById('parent-name').value;
+        const childAge = document.getElementById('child-age').value;
+        const concern = document.getElementById('concern-focus').value;
+        const phone = document.getElementById('parent-phone').value;
+
+        // Display Success confirmation
+        formContainer.classList.add('hidden');
+        successState.classList.remove('hidden');
+
+        // Optional direct WhatsApp connection
+        const message = encodeURIComponent(`Halo Klinik Harapanku, saya ${parentName}. Ingin mendaftar Asesmen Awal untuk buah hati usia ${childAge}. Fokus kebutuhan: ${concern}. Mohon informasi ketersediaan jadwal terdekat.`);
+        setTimeout(() => {
+          window.open(`https://wa.me/628115400992?text=${message}`, '_blank');
+        }, 1200);
+      });
+    });
+  </script>
+</body></html>
