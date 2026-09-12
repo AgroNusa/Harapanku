@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TumbuhKembang.id - Platform Skrining Tumbuh Kembang Pediatrik Empatik</title>
+  <meta name="description" content="Platform skrining mandiri pediatrik berbasis Denver II & M-CHAT-R/F dengan kalkulator usia koreksi prematur dan roadmap terapi stimulasi 14 hari ramah anak.">
+  
+  <!-- Tailwind CSS CDN with Forms Plugin -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet & Print Media -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            tealBrand: {
+              50: '#F0FDFA',
+              100: '#CCFBF1',
+              200: '#99F6E4',
+              500: '#14B8A6',
+              600: '#0D9488',
+              700: '#0F766E',
+            },
+            warmCream: '#FDFBF7',
+            surfaceNeutral: '#F8FAFC',
+            softAmber: '#F59E0B',
+            softCoral: '#FB923C',
+            softIndigo: '#6366F1',
+          },
+          boxShadow: {
+            xs: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col justify-between selection:bg-teal-100 selection:text-teal-800">
+
+  <!-- ======================================================== -->
+  <!-- TOP APP NAVIGATION                                       -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 px-4 lg:px-8 py-3.5 shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo(1)">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-600 to-teal-400 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-500/20">
+          🌱
+        </div>
+        <div>
+          <div class="flex items-center space-x-1.5">
+            <span class="font-extrabold text-lg text-slate-800 tracking-tight">TumbuhKembang<span class="text-teal-600">.id</span></span>
+            <span class="px-2 py-0.5 text-[11px] font-semibold bg-teal-50 text-teal-700 rounded-full border border-teal-200/60">Pediatrik Mandiri</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">Triase Denver II & M-CHAT-R/F Ramah Keluarga</p>
+        </div>
+      </div>
+
+      <!-- Quick Step Indicator Bar (Desktop) -->
+      <div class="hidden md:flex items-center space-x-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200/70 text-xs font-medium">
+        <button onclick="navigateTo(1)" id="pill-nav-1" class="transition-all px-3 py-1 rounded-full text-white bg-teal-600 font-bold shadow-xs">1. Data Anak</button>
+        <span class="text-slate-300">•</span>
+        <button onclick="navigateTo(2)" id="pill-nav-2" class="transition-all px-3 py-1 rounded-full text-slate-500 hover:text-teal-700">2. Skrining Adaptif</button>
+        <span class="text-slate-300">•</span>
+        <button onclick="navigateTo(3)" id="pill-nav-3" class="transition-all px-3 py-1 rounded-full text-slate-500 hover:text-teal-700">3. Roadmap Terapi</button>
+        <span class="text-slate-300">•</span>
+        <button onclick="navigateTo(4)" id="pill-nav-4" class="transition-all px-3 py-1 rounded-full text-slate-500 hover:text-teal-700">4. Konsultasi Psikolog</button>
+      </div>
+
+      <!-- Secure Mode Badge -->
+      <div class="flex items-center space-x-2">
+        <div class="flex items-center bg-teal-50 text-teal-800 text-xs px-3 py-1.5 rounded-xl border border-teal-200/70 font-medium">
+          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse mr-2"></span>
+          Mode Aman & Rahasia
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- MAIN CONTAINER & STEP PROGRESS BAR                       -->
+  <!-- ======================================================== -->
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+    
+    <!-- STEP PROGRESS BAR (MOBILE & DESKTOP) -->
+    <div id="progress-container" class="mb-6 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+        <span id="step-counter-text" class="text-teal-700 font-bold">Langkah 1 dari 4: Identitas & Usia Koreksi</span>
+        <span id="step-percentage" class="text-slate-400">25% Selesai</span>
+      </div>
+      <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden flex">
+        <div id="progress-bar-fill" class="bg-gradient-to-r from-teal-500 to-teal-600 h-full rounded-full transition-all duration-500" style="width: 25%"></div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- SCREEN 1: ONBOARDING & CHILD DATA INPUT                  -->
+    <!-- ======================================================== -->
+    <section id="screen-1" class="fade-enter space-y-6">
+      
+      <!-- Welcome Hero Banner -->
+      <div class="bg-gradient-to-br from-teal-50 via-teal-100/30 to-amber-50/40 rounded-3xl p-6 sm:p-8 border border-teal-100/70 relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-teal-200 text-teal-800 text-xs font-semibold mb-3.5 shadow-xs">
+            <span>✨</span> Denver II & M-CHAT-R/F Integrated Engine
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight leading-snug">
+            Kenali & Dukung Potensi Tumbuh Kembang si Kecil
+          </h1>
+          <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+            Pemeriksaan skrining mandiri tanpa rasa khawatir untuk Ayah dan Bunda. Mengukur tonggak wicara, motorik sensori, dan perilaku sosial secara akurat dengan perhitungan <strong>usia koreksi prematur</strong> otomatis.
+          </p>
+        </div>
+        <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-teal-200/40 rounded-full blur-2xl pointer-events-none"></div>
+      </div>
+
+      <!-- Child Profile Form Card -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-sm">👶</span>
+            Informasi Buah Hati
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Digunakan untuk menghitung norma rentang usia Denver II yang tepat.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- Child Name Input -->
+          <div>
+            <label for="child-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Nama Panggilan Anak <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="child-name" 
+              placeholder="Contoh: Arka, Kirana..." 
+              value="Arka" 
+              oninput="handleNameChange(this.value)"
+              class="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white text-sm transition"
+            />
+          </div>
+
+          <!-- Birth Date Input -->
+          <div>
+            <label for="birth-date" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Tanggal Lahir Anak <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="date" 
+              id="birth-date" 
+              value="2023-04-15"
+              onchange="recalculateAgesAndUI()"
+              class="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white text-sm transition"
+            />
+          </div>
+        </div>
+
+        <!-- Premature Toggle & Gestational Age Engine -->
+        <div class="bg-amber-50/50 rounded-2xl p-5 border border-amber-100 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="pr-4">
+              <span class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                <span>⏱️</span> Apakah si Kecil lahir prematur (&lt; 37 minggu)?
+              </span>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Penting: Bayi prematur berhak dihitung menggunakan <strong>Usia Koreksi</strong> hingga usia 2 tahun agar tidak salah dinilai.
+              </p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+              <input type="checkbox" id="premature-toggle" class="sr-only peer" checked onchange="togglePremature(this.checked)">
+              <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
+            </label>
+          </div>
+
+          <!-- Premature Details Container -->
+          <div id="premature-slider-container" class="pt-2 border-t border-amber-200/50 space-y-3">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-semibold text-slate-700">Usia Gestasi saat Lahir:</span>
+              <span class="font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-lg" id="gestation-label">33 Minggu (Prematur Sedang)</span>
+            </div>
+            <input 
+              type="range" 
+              id="gestation-range" 
+              min="24" 
+              max="36" 
+              value="33" 
+              oninput="updateGestation(this.value)"
+              class="w-full h-2 bg-amber-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
+            />
+            <div class="flex justify-between text-[11px] text-slate-400">
+              <span>24 Minggu (Ekstrem)</span>
+              <span>32 Minggu</span>
+              <span>36 Minggu (Late Preterm)</span>
+            </div>
+
+            <!-- Dynamic Age Calculation Box -->
+            <div class="bg-white rounded-xl p-3.5 border border-amber-200/70 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div>
+                <span class="text-slate-500">Usia Kronologis (KTP):</span>
+                <span class="font-bold text-slate-800 ml-1" id="chrono-age-display">22 Bulan</span>
+              </div>
+              <div class="text-teal-700 font-medium">➔ Usia Koreksi Denver II: <span class="font-extrabold bg-teal-50 px-2 py-0.5 rounded border border-teal-200" id="corrected-age-display">20 Bulan 1 Minggu</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Concerns Multi-select Chips -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+            Fokus Perhatian Utama Ayah & Bunda Saat Ini (Bisa Pilih &gt; 1):
+          </label>
+          <div class="flex flex-wrap gap-2.5" id="concern-chips">
+            <button type="button" onclick="toggleChip(this, 'speech_delay')" class="chip-btn px-4 py-2 rounded-xl text-xs font-medium border border-teal-500 bg-teal-50 text-teal-800 transition shadow-xs">
+              🗣️ Belum bicara lancar (Speech delay)
+            </button>
+            <button type="button" onclick="toggleChip(this, 'eye_contact')" class="chip-btn px-4 py-2 rounded-xl text-xs font-medium border border-teal-500 bg-teal-50 text-teal-800 transition shadow-xs">
+              👀 Sulit kontak mata / respons nama
+            </button>
+            <button type="button" onclick="toggleChip(this, 'sensory_issue')" class="chip-btn px-4 py-2 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition">
+              🔊 Sensitif suara keras / tekstur baju
+            </button>
+            <button type="button" onclick="toggleChip(this, 'tantrum_transisi')" class="chip-btn px-4 py-2 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition">
+              💥 Sering tantrum intens / sulit transisi
+            </button>
+            <button type="button" onclick="toggleChip(this, 'milestone_check')" class="chip-btn px-4 py-2 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition">
+              📋 Cek rutin berkala (Milestone Check)
+            </button>
+          </div>
+        </div>
+
+        <!-- Reassuring disclaimer banner -->
+        <div class="bg-blue-50/70 rounded-2xl p-4 border border-blue-100 flex items-start space-x-3 text-xs text-blue-900 leading-relaxed">
+          <span class="text-base flex-shrink-0">🛡️</span>
+          <div>
+            <strong class="font-bold">Pendekatan Empatik & Non-Stigmatisasi:</strong> Skrining ini dirancang bukan sebagai penentu diagnosis medis permanen, melainkan alat deteksi dini dan panduan stimulasi bermain di rumah bersama keluarga.
+          </div>
+        </div>
+
+        <!-- Bottom Action CTA -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-slate-500 flex items-center gap-1.5">
+            <span>⏱️</span> Estimasi waktu: 3-5 menit (8 pertanyaan adaptif)
+          </div>
+          <button 
+            onclick="validateAndStartScreening()" 
+            class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-bold text-sm shadow-md shadow-teal-500/25 transition-all flex items-center justify-center space-x-2"
+          >
+            <span>Mulai Skrining Mandiri</span>
+            <span>➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SCREEN 2: ADAPTIVE CARD-BASED SCREENING                 -->
+    <!-- ======================================================== -->
+    <section id="screen-2" class="fade-enter space-y-6 hidden">
+      <!-- Questionnaire Header Meta -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center space-x-3">
+          <span id="domain-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200">
+            💬 Wicara & Komunikasi Sosial
+          </span>
+          <span id="milestone-badge" class="text-xs text-slate-500">Denver II Milestone #1</span>
+        </div>
+        <div class="text-xs font-semibold text-slate-600 flex items-center gap-1.5">
+          <span id="question-tracker-text">Pertanyaan 1 dari 8</span>
+          <span class="text-slate-300">•</span>
+          <span id="remaining-time-text" class="text-teal-600">Sisa waktu: ~4 menit</span>
+        </div>
+      </div>
+
+      <!-- Notification Toast for Adaptive Trigger (M-CHAT-R/F) -->
+      <div id="mchat-subtrigger-banner" class="hidden bg-indigo-50 border border-indigo-200 rounded-2xl p-4 transition-all">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-start gap-2.5">
+            <span class="text-lg">🧭</span>
+            <div>
+              <h4 class="text-xs font-bold text-indigo-900">Langkah Tambahan: Menelaah Interaksi Sosial si Kecil</h4>
+              <p class="text-xs text-indigo-700 mt-0.5">
+                Kami menambahkan pertanyaan konfirmasi respon interaksi timbal balik sesuai protokol M-CHAT-R/F tanpa beban diagnosa.
+              </p>
+            </div>
+          </div>
+          <span class="text-[11px] font-bold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-md flex-shrink-0">Triase Adaptif</span>
+        </div>
+
+        <!-- Adaptive Follow-Up Questions Container -->
+        <div id="mchat-followup-content" class="mt-3 pt-3 border-t border-indigo-200/60 hidden space-y-2.5">
+          <h5 id="mchat-f-title" class="text-xs font-bold text-indigo-900">Langkah Tambahan M-CHAT:</h5>
+          <p id="mchat-f-context" class="text-xs text-slate-600"></p>
+          <div id="mchat-f-options" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <!-- Central Question Card -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+        
+        <!-- Question Text & Child Name Injection -->
+        <div>
+          <div class="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+            <span>OBSERVASI PERILAKU SEHARI-HARI DI RUMAH</span>
+            <span class="text-teal-600 flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-teal-500"></span> Validasi Denver II
+            </span>
+          </div>
+          <h2 id="screening-question-title" class="text-xl sm:text-2xl font-extrabold text-slate-800 leading-snug">
+            Apakah <span class="text-teal-600 font-bold child-name-target">Arka</span> pernah menunjuk benda menarik hanya untuk memperlihatkannya kepada Ayah/Bunda?
+          </h2>
+        </div>
+
+        <!-- Instructional Visual Placeholder Box (Micro Illustration / 3-Sec Demo) -->
+        <div class="relative bg-gradient-to-r from-teal-50 via-slate-50 to-amber-50 rounded-2xl p-4 sm:p-6 border border-slate-200/80 flex flex-col sm:flex-row items-center gap-5">
+          <div id="illustration-placeholder" class="w-full sm:w-48 h-32 bg-white rounded-xl border border-slate-200 shadow-inner flex flex-col items-center justify-center p-3 text-center relative overflow-hidden flex-shrink-0">
+            <!-- Dynamic SVG injected by JS -->
+          </div>
+
+          <!-- Clarifying subtext box with lightbulb icon -->
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <div class="flex items-center space-x-1.5 font-bold text-amber-900 bg-amber-100/70 px-2.5 py-1 rounded-lg w-max">
+              <span>💡</span> Contoh Konkret di Rumah:
+            </div>
+            <p id="screening-question-example" class="leading-relaxed">
+              Menunjuk pesawat terbang di langit lalu memastikan Ayah/Bunda melihat ke arah pesawat tersebut, bukan sekadar menunjuk botol susu saat ia lapar atau minta diambilkan mainan.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Radio Response Cards -->
+        <div class="space-y-3" id="response-cards-container">
+          <!-- Option A -->
+          <label class="group relative flex items-center justify-between p-4 rounded-2xl border-2 border-slate-200 hover:border-teal-500 bg-white hover:bg-teal-50/30 cursor-pointer transition">
+            <div class="flex items-center space-x-3.5">
+              <input type="radio" name="screening_response" value="often" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="handleAnswerSelect('often')">
+              <div>
+                <span class="block text-sm font-bold text-slate-800 group-hover:text-teal-900">(A) Sering / Sudah Mahir</span>
+                <span class="text-xs text-slate-500">Muncul konsisten tanpa perlu diinstruksikan berulang</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200 flex-shrink-0">Optimal</span>
+          </label>
+
+          <!-- Option B -->
+          <label class="group relative flex items-center justify-between p-4 rounded-2xl border-2 border-slate-200 hover:border-teal-500 bg-white hover:bg-teal-50/30 cursor-pointer transition">
+            <div class="flex items-center space-x-3.5">
+              <input type="radio" name="screening_response" value="sometimes" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="handleAnswerSelect('sometimes')">
+              <div>
+                <span class="block text-sm font-bold text-slate-800 group-hover:text-teal-900">(B) Terkadang / Masih Butuh Bantuan</span>
+                <span class="text-xs text-slate-500">Perlu dipancing berkali-kali atau hanya jika sangat tertarik</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-50 text-amber-700 rounded-lg border border-amber-200 flex-shrink-0">Stimulasi</span>
+          </label>
+
+          <!-- Option C (Triggers Adaptive MCHAT simulation) -->
+          <label class="group relative flex items-center justify-between p-4 rounded-2xl border-2 border-slate-200 hover:border-teal-500 bg-white hover:bg-teal-50/30 cursor-pointer transition">
+            <div class="flex items-center space-x-3.5">
+              <input type="radio" name="screening_response" value="rare" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="handleAnswerSelect('rare')">
+              <div>
+                <span class="block text-sm font-bold text-slate-800 group-hover:text-teal-900">(C) Belum Terlihat</span>
+                <span class="text-xs text-slate-500">Belum pernah melakukan perilaku ini atau sangat jarang</span>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-lg border border-indigo-200 flex-shrink-0">Perlu Pantauan</span>
+          </label>
+
+          <!-- Option D (Interactive Accordion Drawer for Mini-Game) -->
+          <div class="rounded-2xl border-2 border-slate-200 bg-slate-50 overflow-hidden transition">
+            <label class="flex items-center justify-between p-4 cursor-pointer hover:bg-slate-100 transition" onclick="toggleMiniGameDrawer()">
+              <div class="flex items-center space-x-3.5">
+                <input type="radio" name="screening_response" value="unsure" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="handleAnswerSelect('unsure')">
+                <div>
+                  <span class="block text-sm font-bold text-slate-800">(?) Ragu / Ingin Coba Tes Dulu Bersama si Kecil</span>
+                  <span class="text-xs text-slate-500">Buka panduan mini-game 60 detik untuk memverifikasi sekarang</span>
+                </div>
+              </div>
+              <span class="text-xs text-teal-700 font-bold bg-white px-2.5 py-1 rounded-lg border border-slate-200 flex items-center gap-1 flex-shrink-0">
+                🎮 Panduan Mini-Game <span id="drawer-arrow">▼</span>
+              </span>
+            </label>
+
+            <!-- Mini Game Drawer Content -->
+            <div id="mini-game-drawer" class="hidden p-5 bg-teal-50/70 border-t border-teal-100 text-xs text-slate-700 space-y-3">
+              <div class="flex items-center justify-between">
+                <h4 id="mini-game-title" class="font-bold text-teal-900 text-sm flex items-center gap-1.5">
+                  <span>⏱️</span> Eksperimen Interaksi 60 Detik di Rumah
+                </h4>
+                <span id="mini-game-materials" class="text-[11px] font-semibold text-teal-700 bg-white px-2 py-0.5 rounded border border-teal-200">
+                  Bahan: Benda Sehari-hari
+                </span>
+              </div>
+              
+              <ol id="mini-game-steps" class="list-decimal list-inside space-y-1.5 text-slate-700 leading-relaxed pl-1"></ol>
+
+              <div class="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-teal-200/50">
+                <button type="button" id="btn-minigame-timer" onclick="startMiniGameCountdown()" class="px-3.5 py-2 bg-white border border-teal-300 text-teal-800 rounded-xl font-bold text-xs hover:bg-teal-50 transition shadow-xs">
+                  ⏱️ Mulai Stopwatch 60 Detik
+                </button>
+                <div class="flex gap-2">
+                  <button type="button" onclick="confirmMiniGameDone('sometimes')" class="px-3.5 py-2 bg-amber-500 text-white rounded-xl font-bold text-xs shadow-xs hover:bg-amber-600 transition">
+                    Hasil: Terkadang (Stimulasi)
+                  </button>
+                  <button type="button" onclick="confirmMiniGameDone('often')" class="px-3.5 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs shadow-xs hover:bg-teal-700 transition">
+                    Hasil: Mahir (Optimal)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button onclick="prevScreeningQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold text-xs transition">
+            ← Kembali
+          </button>
+
+          <button 
+            id="btn-next-screening" 
+            onclick="nextScreeningQuestion()" 
+            class="px-8 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md shadow-teal-600/20 transition flex items-center gap-2"
+          >
+            <span>Pertanyaan Berikutnya</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SCREEN 3: INTEGRATED 3-ASPECT RESULTS & ROADMAP TERAPI  -->
+    <!-- ======================================================== -->
+    <section id="screen-3" class="fade-enter space-y-6 hidden">
+      
+      <!-- Congratulatory & Empathetic Banner -->
+      <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden">
+        <div class="relative z-10 space-y-2">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-semibold">
+            <span>🎉</span> Evaluasi Perkembangan Selesai
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            Terima kasih sudah membersamai tumbuh kembang si Kecil, Ayah & Bunda!
+          </h2>
+          <p class="text-teal-100 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            Setiap anak bertumbuh dengan ritmenya masing-masing. Hasil ini merupakan peta navigasi untuk memberikan stimulasi yang tepat sasaran di rumah.
+          </p>
+        </div>
+      </div>
+
+      <!-- Child Profile & Chrono vs Corrected Age Summary Card -->
+      <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center text-2xl font-bold text-teal-700">
+            👦
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h3 class="text-lg font-extrabold text-slate-800 child-name-target">Arka</h3>
+              <span id="res-premature-badge" class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[11px] font-bold">Riwayat Prematur 33 Mgg</span>
+            </div>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 mt-1">
+              <span>Usia Kronologis: <strong class="text-slate-700" id="res-chrono">22 Bulan</strong></span>
+              <span>•</span>
+              <span class="text-teal-700 font-semibold">Usia Koreksi Skrining: <strong class="text-teal-800" id="res-corrected">20 Bulan 1 Minggu</strong></span>
+              <span>•</span>
+              <span class="text-slate-400">Tanggal Evaluasi: <span id="res-eval-date">Hari ini</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <button onclick="downloadPdfRoadmap()" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs shadow-xs transition">
+            <span>📄 Unduh Roadmap Terapi (PDF)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Overall Recommendation Alert -->
+      <div class="bg-gradient-to-r from-teal-50 to-amber-50/60 p-4 sm:p-5 rounded-2xl border border-teal-200/80 text-xs sm:text-sm text-slate-700 leading-relaxed flex items-start gap-3">
+        <span class="text-xl flex-shrink-0">📋</span>
+        <div>
+          <strong class="font-bold text-slate-800 block mb-0.5">Kesimpulan Evaluasi Klinis:</strong>
+          <span id="overall-recommendation-text"></span>
+        </div>
+      </div>
+
+      <!-- 3 Pillar Outcome Cards (Denver II & M-CHAT-R/F Integrated) -->
+      <div>
+        <div class="flex items-center justify-between mb-3 px-1">
+          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Ringkasan 3 Pilar Perkembangan</h3>
+          <span class="text-xs text-slate-400">Denver II + M-CHAT-R/F Triase</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- Pillar 1: Wicara & Bahasa -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-xs space-y-3 relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-2xl">🗣️</span>
+                <span id="pillar-wicara-badge" class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">
+                  Perlu Penguatan Stimulasi
+                </span>
+              </div>
+              <div class="mt-2">
+                <h4 class="font-extrabold text-slate-800 text-base">Aspek Wicara & Bahasa</h4>
+                <p id="pillar-wicara-summary" class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Memerlukan pengayaan artikulasi kosa kata aktif dan gestur menunjuk dua arah.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-100">
+              <div class="flex items-center justify-between text-[11px] text-slate-500">
+                <span>Skor Indikator</span>
+                <span id="pillar-wicara-scoretext" class="font-bold text-slate-700">75% Optimal</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div id="pillar-wicara-scorebar" class="h-full rounded-full bg-amber-500 transition-all duration-700" style="width: 75%"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-amber-700 pt-1">
+                <span id="pillar-wicara-target" class="text-[11px]">Target: 20 Kata & Gestur</span>
+                <button onclick="switchResultTab('tab-wicara')" class="hover:underline text-teal-700 text-xs font-bold">Buka Modul ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Okupasi & Sensori -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-emerald-200 shadow-xs space-y-3 relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-2xl">🧩</span>
+                <span id="pillar-okupasi-badge" class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  Sesuai Usia Perkembangan
+                </span>
+              </div>
+              <div class="mt-2">
+                <h4 class="font-extrabold text-slate-800 text-base">Aspek Okupasi & Sensori</h4>
+                <p id="pillar-okupasi-summary" class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Motorik halus menjimpit objek kecil & eksplorasi tactile basah/kering berkembang baik.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-100">
+              <div class="flex items-center justify-between text-[11px] text-slate-500">
+                <span>Skor Indikator</span>
+                <span id="pillar-okupasi-scoretext" class="font-bold text-slate-700">85% Optimal</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div id="pillar-okupasi-scorebar" class="h-full rounded-full bg-emerald-500 transition-all duration-700" style="width: 85%"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-emerald-700 pt-1">
+                <span id="pillar-okupasi-target" class="text-[11px]">Status: On-Track</span>
+                <button onclick="switchResultTab('tab-okupasi')" class="hover:underline text-teal-700 text-xs font-bold">Buka Modul ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Perilaku & Interaksi (Indigo caution instead of red) -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-indigo-200 shadow-xs space-y-3 relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-2xl">🧸</span>
+                <span id="pillar-perilaku-badge" class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-indigo-100 text-indigo-800 border border-indigo-300">
+                  Disarankan Observasi Ahli
+                </span>
+              </div>
+              <div class="mt-2">
+                <h4 class="font-extrabold text-slate-800 text-base">Aspek Perilaku & Interaksi</h4>
+                <p id="pillar-perilaku-summary" class="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Atensi bersama (Joint Attention) & respon panggilan nama memerlukan telaah mendalam.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-100">
+              <div class="flex items-center justify-between text-[11px] text-slate-500">
+                <span>Triase M-CHAT-R/F</span>
+                <span id="pillar-perilaku-scoretext" class="font-bold text-slate-700">60%</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div id="pillar-perilaku-scorebar" class="h-full rounded-full bg-indigo-500 transition-all duration-700" style="width: 60%"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-indigo-700 pt-1">
+                <span id="pillar-perilaku-target" class="text-[11px]">Triase M-CHAT-R/F</span>
+                <button onclick="switchResultTab('tab-perilaku')" class="hover:underline text-teal-700 text-xs font-bold">Buka Modul ➔</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tabbed Roadmap Terapi & Rekomendasi Stimulasi Rumahan -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <h3 class="text-lg font-bold text-slate-800">Roadmap Stimulasi Mandiri 14 Hari di Rumah</h3>
+            <p class="text-xs text-slate-500">Panduan praktis terapis wicara & okupasi pediatrik untuk Ayah & Bunda.</p>
+          </div>
+
+          <!-- Tab Selector Buttons -->
+          <div class="inline-flex p-1 bg-slate-100 rounded-xl text-xs font-bold text-slate-600">
+            <button id="btn-tab-wicara" onclick="switchResultTab('tab-wicara')" class="px-3.5 py-1.5 rounded-lg bg-white shadow-xs text-teal-700">
+              🗣️ Wicara & Bahasa
+            </button>
+            <button id="btn-tab-okupasi" onclick="switchResultTab('tab-okupasi')" class="px-3.5 py-1.5 rounded-lg hover:text-slate-900 transition">
+              🧩 Okupasi & Sensori
+            </button>
+            <button id="btn-tab-perilaku" onclick="switchResultTab('tab-perilaku')" class="px-3.5 py-1.5 rounded-lg hover:text-slate-900 transition">
+              🧸 Interaksi & Perilaku
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 1: WICARA -->
+        <div id="tab-wicara" class="space-y-4">
+          <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-100 text-xs text-amber-900 flex items-start gap-3">
+            <span class="text-lg flex-shrink-0">🎯</span>
+            <div>
+              <strong>Target Perkembangan Wicara:</strong> Memperkaya perbendaharaan kata aktif melalui tiruan bunyi vokal (animal sounds), teknik self-talk, dan menunjuk proto-deklaratif.
+            </div>
+          </div>
+          <div id="roadmap-items-wicara" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- TAB CONTENT 2: OKUPASI (Initially hidden) -->
+        <div id="tab-okupasi" class="space-y-4 hidden">
+          <div class="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-100 text-xs text-emerald-900 flex items-start gap-3">
+            <span class="text-lg flex-shrink-0">🌿</span>
+            <div>
+              <strong>Target Sensori Bebas Layar:</strong> Tingkatkan integrasi sistem proprioseptif dan vestibular melalui aktivitas taktil dan rintangan motorik aman di rumah.
+            </div>
+          </div>
+          <div id="roadmap-items-okupasi" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- TAB CONTENT 3: PERILAKU (Initially hidden) -->
+        <div id="tab-perilaku" class="space-y-4 hidden">
+          <div class="bg-indigo-50/70 p-4 rounded-2xl border border-indigo-100 text-xs text-indigo-900 flex items-start gap-3">
+            <span class="text-lg flex-shrink-0">🧸</span>
+            <div>
+              <strong>Target Atensi Sosial & Regulasi:</strong> Membangun kebiasaan atensi bersama (melihat apa yang orang tua lihat) dan mempermudah transisi kegiatan tanpa memicu ledakan tantrum.
+            </div>
+          </div>
+          <div id="roadmap-items-perilaku" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- Interactive 14-Day Checklist Section -->
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📅</span> Pelacak Aktivitas Harian (14 Hari Tersimpan Otomatis):
+            </h4>
+            <span id="checklist-progress-text" class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+              0 dari 14 Selesai
+            </span>
+          </div>
+
+          <div id="checklist-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto pr-1 custom-scrollbar"></div>
+        </div>
+
+        <!-- Recommendation to consult psychologist box -->
+        <div id="consultation-prompt-box" class="p-4 bg-gradient-to-r from-teal-50 to-indigo-50/50 rounded-2xl border border-teal-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs space-y-1">
+            <span class="font-bold text-slate-800 flex items-center gap-1.5 text-sm">
+              <span>🩺</span> Butuh Pendapat Profesional yang Objektif?
+            </span>
+            <p id="consultation-prompt-msg" class="text-slate-600">
+              Hasil skrining menunjukkan adanya indikator yang dianjurkan untuk dikonfirmasi bersama Psikolog Anak atau Dokter Tumbuh Kembang.
+            </p>
+          </div>
+          <button 
+            onclick="navigateTo(4)" 
+            class="w-full sm:w-auto flex-shrink-0 px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md shadow-teal-600/20 transition flex items-center justify-center gap-2"
+          >
+            <span>Jadwalkan Konsultasi Psikolog</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SCREEN 4: PSYCHOLOGIST CONSULTATION & BOOKING           -->
+    <!-- ======================================================== -->
+    <section id="screen-4" class="fade-enter space-y-6 hidden">
+      
+      <!-- Referral Proposition Header -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-bold border border-teal-200">
+          <span>🩺</span> Layanan Rujukan & Evaluasi Terakreditasi
+        </div>
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
+          Diskusikan Hasil Skrining dengan Psikolog Anak & Terapis Terpercaya
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl">
+          Data skrining mandiri yang baru saja Ayah & Bunda lengkapi akan <strong>otomatis dilampirkan ke rekam evaluasi klinis</strong>. Dokter dan psikolog dapat langsung menelaah riwayat gestasi serta video observasi tanpa perlu memulai dari nol.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Verified Psychologist Profile Card (lg:col-span-5) -->
+        <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-slate-100 space-y-5">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Pilih Tenaga Ahli Mitra:</span>
+            <div class="flex space-x-1.5">
+              <button onclick="switchSpecialist('spec-1')" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-teal-200 bg-teal-50 text-teal-800">Psikolog</button>
+              <button onclick="switchSpecialist('spec-2')" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100">Wicara</button>
+              <button onclick="switchSpecialist('spec-3')" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100">Okupasi</button>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="relative flex-shrink-0">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-md">
+                RP
+              </div>
+              <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white" title="Tersedia"></span>
+            </div>
+            <div>
+              <div class="flex items-center space-x-1.5">
+                <span id="spec-badge" class="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded">STR Aktif HIMPSI</span>
+              </div>
+              <h3 id="spec-name" class="font-extrabold text-slate-800 text-base mt-1">Dra. Riana Puspita, M.Psi.</h3>
+              <p id="spec-title" class="text-xs text-slate-500">Psikolog Klinis Anak & Tumbuh Kembang</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Fokus Spesialisasi:</div>
+            <div class="flex flex-wrap gap-1.5" id="spec-specialties">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">Speech Delay</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">Triase Spektrum Autisme</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">Sensori Integrasi</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">Regulasi Emosi Balita</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/70 space-y-2 text-xs">
+            <div class="flex items-center justify-between text-slate-600">
+              <span>Pengalaman Klinis:</span>
+              <strong id="spec-experience" class="text-slate-800">12+ Tahun</strong>
+            </div>
+            <div class="flex items-center justify-between text-slate-600">
+              <span>Afiliasi Klinik:</span>
+              <strong id="spec-clinic" class="text-slate-800">Klinik Harapanku Balikpapan</strong>
+            </div>
+            <div class="flex items-center justify-between text-slate-600">
+              <span>Rating Kepuasan Orang Tua:</span>
+              <strong id="spec-rating" class="text-amber-600 flex items-center gap-1">★ 4.95 (380+ Sesi)</strong>
+            </div>
+          </div>
+
+          <!-- Attached Diagnostic Snapshot -->
+          <div class="bg-teal-50/60 p-3.5 rounded-2xl border border-teal-200/80 text-xs text-teal-900 space-y-1.5">
+            <div class="font-bold flex items-center gap-1.5">
+              <span>📎</span> Dokumen Terlampir Otomatis ke Dokter/Terapis:
+            </div>
+            <div class="text-teal-800 text-[11px] space-y-1 pl-1">
+              <div>• <strong>Pasien:</strong> <span id="attached-child-name" class="child-name-target font-semibold">Arka</span> (Usia Koreksi: <span id="attached-corrected-age">20 Bulan</span>)</div>
+              <div>• <strong>Status Denver II:</strong> <span id="attached-denver-status">Wicara & Sensori Tercatat</span></div>
+              <div>• <strong>Triase M-CHAT-R/F:</strong> <span id="attached-mchat-status">Risiko Tercatat</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Schedule Selector & Consultation Mode (lg:col-span-7) -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+          
+          <!-- Consultation Mode Selector -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+              Pilih Metode Konsultasi:
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="p-4 rounded-2xl border-2 border-teal-600 bg-teal-50/40 cursor-pointer flex items-start space-x-3 transition">
+                <input type="radio" name="consult_mode" value="teleconsult" checked onchange="handleConsultModeChange('teleconsult')" class="mt-0.5 text-teal-600 focus:ring-teal-500">
+                <div class="text-xs">
+                  <span class="font-bold text-slate-800 block">📹 Telekonsultasi Video</span>
+                  <span class="text-slate-500">Nyaman dari rumah via Zoom terenkripsi, termasuk rekaman panduan.</span>
+                  <div class="mt-2 text-teal-700 font-extrabold" id="teleconsult-price">Rp 250.000 / 45 mnt</div>
+                </div>
+              </label>
+
+              <label class="p-4 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-white cursor-pointer flex items-start space-x-3 transition">
+                <input type="radio" name="consult_mode" value="inclinic" onchange="handleConsultModeChange('inclinic')" class="mt-0.5 text-teal-600 focus:ring-teal-500">
+                <div class="text-xs">
+                  <span class="font-bold text-slate-800 block">🏥 Tatap Muka di Klinik</span>
+                  <span class="text-slate-500">Ruang observasi sensori ramah anak (Klinik Harapanku).</span>
+                  <div class="mt-2 text-slate-700 font-extrabold" id="inclinic-price">Rp 375.000 / 60 mnt</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Schedule Date Pills -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+              Pilih Tanggal Sesi:
+            </label>
+            <div class="flex gap-2.5 overflow-x-auto pb-1 custom-scrollbar" id="date-selector">
+              <!-- Dynamically populated dates -->
+            </div>
+          </div>
+
+          <!-- Time Slot Chips -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+              Pilih Waktu Konsultasi yang Tenang untuk Anak:
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="time-slots">
+              <button type="button" onclick="selectTimeSlot(this, '10:00 - 10:45 WIB')" class="time-slot-btn px-3 py-2.5 rounded-xl text-xs font-bold border-2 border-teal-600 bg-teal-50 text-teal-800 transition">
+                10:00 - 10:45 WIB
+              </button>
+              <button type="button" onclick="selectTimeSlot(this, '13:30 - 14:15 WIB')" class="time-slot-btn px-3 py-2.5 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition">
+                13:30 - 14:15 WIB
+              </button>
+              <button type="button" onclick="selectTimeSlot(this, '16:00 - 16:45 WIB')" class="time-slot-btn px-3 py-2.5 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition">
+                16:00 - 16:45 WIB
+              </button>
+              <button type="button" onclick="selectTimeSlot(this, '19:00 - 19:45 WIB')" class="time-slot-btn px-3 py-2.5 rounded-xl text-xs font-medium border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition">
+                19:00 - 19:45 WIB
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1.5">💡 Tips: Pilih jam di mana si Kecil sudah selesai tidur siang dan kenyang makan.</p>
+          </div>
+
+          <!-- Parent Contact Form Inputs -->
+          <div class="pt-2 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Nomor WhatsApp Ayah / Bunda <span class="text-rose-500">*</span></label>
+              <input type="tel" id="parent-phone" value="0812-3456-7890" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Catatan Tambahan untuk Tenaga Ahli</label>
+              <input type="text" id="parent-notes" placeholder="Misal: Si Kecil takut suara blender..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Final Booking Submit Button -->
+          <div class="pt-2">
+            <button 
+              onclick="showBookingConfirmationModal()" 
+              class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-bold text-sm shadow-lg shadow-teal-600/25 transition flex items-center justify-center space-x-2"
+            >
+              <span>Konfirmasi Jadwal & Kirim Ringkasan Skrining</span>
+              <span>➔</span>
+            </button>
+            <p class="text-center text-[11px] text-slate-400 mt-2">
+              🔒 Konfirmasi otomatis dikirim via WhatsApp & Email terdaftar. Pembayaran dapat dilakukan setelah sesi dikonfirmasi.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: SUCCESSFUL BOOKING CONFIRMATION                   -->
+  <!-- ======================================================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 text-center space-y-4 fade-enter">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-3xl mx-auto flex items-center justify-center text-3xl shadow-md shadow-emerald-500/10">
+        ✓
+      </div>
+      <div>
+        <h3 class="text-xl font-extrabold text-slate-800">Jadwal Konsultasi Terkonfirmasi!</h3>
+        <p class="text-xs text-slate-600 mt-1">
+          Rekam evaluasi tumbuh kembang <strong class="child-name-target text-slate-800">Arka</strong> dan rincian triase telah berhasil disiapkan untuk <strong id="modal-doctor-label">Dra. Riana Puspita, M.Psi.</strong>
+        </p>
+      </div>
+
+      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 text-left text-xs space-y-2">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Waktu Konsultasi:</span>
+          <span class="font-bold text-slate-800" id="modal-time-label">Sabtu, 28 Okt • 10:00 WIB</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Metode:</span>
+          <span class="font-bold text-teal-700" id="modal-method-label">Telekonsultasi Video Zoom</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Dokumen Lampiran:</span>
+          <span class="font-bold text-slate-800">Skrining 3 Pilar (PDF Siap)</span>
+        </div>
+      </div>
+
+      <div class="pt-2 space-y-2">
+        <button onclick="sendWhatsAppBooking()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+          <span>💬 Teruskan Rangkuman ke WhatsApp Resmi</span>
+        </button>
+        <button onclick="downloadPdfRoadmap()" class="w-full py-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold text-xs transition">
+          Unduh Salinan Ringkasan PDF
+        </button>
+        <button onclick="closeModalAndReset()" class="w-full py-2 rounded-xl text-slate-400 hover:text-slate-600 font-medium text-xs transition">
+          Tutup & Kembali ke Halaman Awal
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Simulation for PDF Download -->
+  <div id="toast-download" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl text-xs font-medium flex items-center space-x-3 hidden fade-enter">
+    <span>📥 Menyiapkan Laporan Evaluasi Tumbuh Kembang PDF...</span>
+    <span class="text-emerald-400 font-bold">Siap Dicetak!</span>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- FOOTER                                                   -->
+  <!-- ======================================================== -->
+  <footer class="bg-white border-t border-slate-100 py-6 px-4 text-center text-xs text-slate-400 mt-12">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-slate-700">TumbuhKembang.id</span>
+        <span>• Platform Deteksi Dini Pediatrik Empatik</span>
+      </div>
+      <p>Berdasarkan Standar Denver Developmental Screening Test II & M-CHAT-R/F Triase Indonesia</p>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/screening-data.js"></script>
+  <script src="js/age-calculator.js"></script>
+  <script src="js/scoring-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
